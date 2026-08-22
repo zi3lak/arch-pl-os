@@ -8,7 +8,7 @@ jobs:
   testy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Narzędzia testowe
         run: sudo apt-get update && sudo apt-get install -y jq imagemagick
       - name: Składnia, materiały, polski interfejs i sekrety
