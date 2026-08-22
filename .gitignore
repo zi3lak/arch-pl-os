@@ -1,0 +1,16 @@
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.token
+credentials*
+secrets*
+__pycache__/
+*.py[cod]
+.DS_Store
+*.log
+*.bak
+*.backup
+.cache/
+state/

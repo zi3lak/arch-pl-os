@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+BASE="$HOME/.local/share/arch-pl-os"
+pkill -f '/arch-pl-os/wygaszacz.py' 2>/dev/null || true
+exec python3 "$BASE/wygaszacz.py"

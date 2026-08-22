@@ -1,0 +1,21 @@
+{
+  "layer":"top", "position":"top", "height":46,
+  "margin-top":10, "margin-left":14, "margin-right":14, "spacing":6,
+  "reload_style_on_change":true,
+  "modules-left":["custom/archpl","hyprland/workspaces","hyprland/submap"],
+  "modules-center":["custom/stan","clock"],
+  "modules-right":["tray","network","pulseaudio","cpu","memory","temperature","custom/gpu","custom/blokada"],
+  "custom/archpl":{"format":"󰣇  ARCH PL OS","tooltip-format":"Polski pulpit dla Arch Linux","on-click":"wofi --show drun --allow-images --insensitive"},
+  "custom/stan":{"exec":"$HOME/.local/share/arch-pl-os/bin/stan-systemu","return-type":"json","interval":5,"format":"{}"},
+  "hyprland/workspaces":{"all-outputs":false,"on-click":"activate","format":"{icon}","format-icons":{"1":"󰆍","2":"󰖟","3":"󰅨","4":"󰎄","5":"󰭹","urgent":"󰀦","active":"󰮯","default":"󰊠"},"persistent-workspaces":{"*":5}},
+  "hyprland/submap":{"format":" TRYB // {} "},
+  "clock":{"interval":1,"locale":"pl_PL.UTF-8","format":"{:%H:%M:%S}","format-alt":"{:%A, %d %B %Y}","tooltip-format":"<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"},
+  "network":{"format-wifi":"󰤨  {signalStrength}%","format-ethernet":"󰈀  SIEĆ","format-disconnected":"󰤭  BRAK SIECI","tooltip-format":"Interfejs: {ifname}\nAdres: {ipaddr}/{cidr}\nPobieranie: {bandwidthDownBytes}\nWysyłanie: {bandwidthUpBytes}","interval":2},
+  "pulseaudio":{"scroll-step":3,"format":"{icon}  {volume}%","format-muted":"󰖁  CISZA","format-icons":{"default":["󰕿","󰖀","󰕾"]},"on-click":"pavucontrol","on-click-right":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"},
+  "cpu":{"interval":2,"format":"󰻠  {usage}%","tooltip-format":"Użycie procesora: {usage}%"},
+  "memory":{"interval":2,"format":"󰍛  {percentage}%","tooltip-format":"Pamięć: {used:0.1f} / {total:0.1f} GiB"},
+  "temperature":{"critical-threshold":85,"format":"󰔏  {temperatureC}°","format-critical":"󰸁  {temperatureC}°"},
+  "custom/gpu":{"exec":"$HOME/.local/share/arch-pl-os/bin/stan-gpu","interval":3,"return-type":"json"},
+  "tray":{"icon-size":17,"spacing":9},
+  "custom/blokada":{"format":"󰌾","tooltip-format":"Zablokuj komputer","on-click":"hyprlock --config $HOME/.config/hypr/arch-pl-lock.conf"}
+}

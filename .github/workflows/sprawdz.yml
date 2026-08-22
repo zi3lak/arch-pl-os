@@ -1,0 +1,15 @@
+name: Sprawdzenie ARCH PL OS
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  testy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Narzędzia testowe
+        run: sudo apt-get update && sudo apt-get install -y jq imagemagick
+      - name: Składnia, materiały, polski interfejs i sekrety
+        run: ./sprawdz-repo.sh

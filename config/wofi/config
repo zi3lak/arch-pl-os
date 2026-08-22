@@ -1,0 +1,13 @@
+width=860
+height=600
+location=center
+show=drun
+prompt=SZUKAJ PROGRAMU
+allow_images=true
+image_size=32
+insensitive=true
+term=alacritty
+hide_scroll=true
+matching=fuzzy
+lines=10
+layer=overlay

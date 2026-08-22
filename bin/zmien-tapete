@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+BASE="$HOME/.local/share/arch-pl-os/assets"; state="$HOME/.cache/arch-pl-tapeta"
+mapfile -t outputs < <(hyprctl monitors -j 2>/dev/null | jq -r 'sort_by(.x) | .[].name')
+tryb=$(cat "$state" 2>/dev/null || printf podstawowy)
+if [[ "$tryb" == podstawowy ]]; then
+ printf skupienie > "$state"; awww img "$BASE/ekran-blokady.png" --transition-type fade --transition-duration 1.1; notify-send -a "ARCH PL OS" "TAPETA: TRYB SKUPIENIA"
+else
+ printf podstawowy > "$state"
+ ((${#outputs[@]})) && awww img -o "${outputs[0]}" "$BASE/tapeta-lewa.png" --transition-type wipe --transition-angle 12 --transition-duration 1.1
+ ((${#outputs[@]} > 1)) && awww img -o "${outputs[1]}" "$BASE/tapeta-prawa.png" --transition-type wipe --transition-angle 168 --transition-duration 1.1
+ notify-send -a "ARCH PL OS" "TAPETA: TRYB PODSTAWOWY"
+fi

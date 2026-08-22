@@ -1,0 +1,26 @@
+@define-color tlo #090a0d;
+@define-color panel rgba(16,17,20,.92);
+@define-color kafel rgba(31,32,37,.84);
+@define-color czerwien #dc0034;
+@define-color jasna #f7f7f9;
+@define-color szara #a5a8b0;
+@define-color zielona #58d68d;
+* { border:none; min-height:0; font-family:"JetBrainsMono Nerd Font"; font-size:12px; font-weight:700; }
+window#waybar { background:@panel; color:@jasna; border:1px solid rgba(255,255,255,.10); border-top:2px solid @czerwien; border-radius:12px; }
+.modules-left,.modules-center,.modules-right { margin:5px 7px; }
+#custom-archpl { color:@jasna; background:@czerwien; padding:0 16px; border-radius:8px; letter-spacing:1px; }
+#workspaces { background:rgba(0,0,0,.25); border-radius:8px; padding:2px 4px; }
+#workspaces button { color:#6f727a; padding:0 10px; margin:1px 2px; border-radius:6px; }
+#workspaces button:hover { color:@jasna; background:rgba(255,255,255,.06); }
+#workspaces button.active { color:@jasna; background:rgba(220,0,52,.20); box-shadow:inset 0 -2px @czerwien; }
+#workspaces button.urgent { color:@czerwien; }
+#custom-stan { color:@zielona; padding:0 12px; background:rgba(88,214,141,.07); border-radius:8px 0 0 8px; }
+#clock { color:@jasna; padding:0 14px; background:@kafel; border-radius:0 8px 8px 0; }
+#network,#pulseaudio,#cpu,#memory,#temperature,#custom-gpu,#tray,#custom-blokada { background:@kafel; padding:0 11px; margin:0 1px; }
+#tray { border-radius:8px 0 0 8px; }
+#network { color:#f7f7f9; } #pulseaudio { color:#d8d8dc; } #cpu { color:#58d68d; } #memory { color:#f0c674; } #temperature { color:#ff8a70; } #custom-gpu { color:#b8c7e0; }
+#custom-blokada { color:@jasna; border-radius:0 8px 8px 0; font-size:15px; }
+#custom-blokada:hover { color:#fff; background:@czerwien; }
+#network.disconnected,.critical { color:@czerwien; }
+tooltip { background:rgba(9,10,13,.98); border:1px solid rgba(220,0,52,.65); border-radius:10px; color:@jasna; }
+tooltip label { padding:10px; }

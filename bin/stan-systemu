@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+okna=$(hyprctl clients -j 2>/dev/null | jq 'length' 2>/dev/null || printf 0)
+printf '{"text":"●  SYSTEM GOTOWY  //  %s OKIEN","tooltip":"ARCH PL OS działa poprawnie\\nOtwarte okna: %s","class":"gotowy"}\n' "$okna" "$okna"

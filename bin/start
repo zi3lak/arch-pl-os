@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -u
+BASE="$HOME/.local/share/arch-pl-os"
+mkdir -p "$HOME/Obrazy/Zrzuty ekranu" "$HOME/.cache"
+pkill -x swaybg 2>/dev/null || true
+pkill -x hyprpaper 2>/dev/null || true
+pkill -x awww-daemon 2>/dev/null || true
+awww-daemon >/tmp/arch-pl-awww.log 2>&1 &
+for _ in {1..30}; do awww query >/dev/null 2>&1 && break; sleep .1; done
+mapfile -t outputs < <(hyprctl monitors -j 2>/dev/null | jq -r 'sort_by(.x) | .[].name')
+((${#outputs[@]})) && awww img -o "${outputs[0]}" "$BASE/assets/tapeta-lewa.png" --transition-type wipe --transition-angle 12 --transition-duration 1.4 --transition-fps 60 >/dev/null 2>&1 || true
+((${#outputs[@]} > 1)) && awww img -o "${outputs[1]}" "$BASE/assets/tapeta-prawa.png" --transition-type wipe --transition-angle 168 --transition-duration 1.4 --transition-fps 60 >/dev/null 2>&1 || true
+if ((${#outputs[@]} > 2)); then for o in "${outputs[@]:2}"; do awww img -o "$o" "$BASE/assets/ekran-blokady.png" --transition-type fade --transition-duration 1 >/dev/null 2>&1 || true; done; fi
+pkill -x waybar 2>/dev/null || true
+waybar >/tmp/arch-pl-waybar.log 2>&1 &
+(sleep 1.2; python3 "$BASE/powitanie.py" >/tmp/arch-pl-powitanie.log 2>&1) &
+(sleep 3; notify-send -a "ARCH PL OS" -i "$BASE/assets/logo.png" "SYSTEM GOTOWY" "Witaj. Wszystko działa po polsku.") &
